@@ -27,6 +27,10 @@
                             border: '#374151',
                             card: '#111827',
                         }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
@@ -60,12 +64,34 @@
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+        .glow-effect {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+        .dark .glow-effect {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        .glow-pulse {
+            animation: pulse-glow 2s infinite;
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); }
+        }
+        .dark .glow-pulse {
+            animation: pulse-glow-dark 2s infinite;
+        }
+        @keyframes pulse-glow-dark {
+            0% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: 0 0 20px rgba(0, 0, 0, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); }
+        }
     </style>
 </head>
-<body class="bg-light text-light text-base antialiased transition-colors duration-300">
+<body class="bg-light text-light text-base antialiased transition-colors duration-300 overflow-x-hidden">
     <!-- Theme Toggle -->
     <button id="theme-toggle" class="fixed top-4 right-4 z-50 p-2 rounded-full glass shadow-lg transition-transform hover:scale-110">
-        <i class="fas fa-moon  text-xl"></i>
+        <i class="fas fa-moon text-xl"></i>
         <i class="fas fa-sun text-xl"></i>
     </button>
 
@@ -73,19 +99,17 @@
     <nav class="fixed w-full z-50 glass-light shadow-md">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold text-blue-500">
+                <div class="text-2xl font-bold text-black dark:text-white">
                     <i class="fas fa-rocket mr-2"></i>balzo.io
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="hover:text-blue-500 transition">Home</a>
-                    <a href="#features" class="hover:text-blue-500 transition">Features</a>
-                    <a href="#about" class="hover:text-blue-500 transition">About</a>
-                    <a href="#contact" class="hover:text-blue-500 transition">Contact</a>
+                    <a href="#home" class="hover:text-gray-500 dark:hover:text-gray-300 transition">Home</a>
+                    <a href="#contact" class="hover:text-gray-500 dark:hover:text-gray-300 transition">Contact</a>
                 </div>
-                <a href="#contact" class="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full transition">
+                <a href="#contact" class="hidden md:block bg-black dark:bg-white text-white dark:text-black px-6 py-2 rounded-full transition">
                     Get Started
                 </a>
-                <button class="md:hidden text-light focus:outline-none">
+                <button class="md:hidden text-black dark:text-white focus:outline-none">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
@@ -94,144 +118,63 @@
 
     <!-- Hero Section -->
     <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-50 to-blue-50 dark:from-gray-900 dark:via-black dark:to-blue-900/30"></div>
-        <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%233b82f6\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-100 via-white to-gray-200 dark:from-gray-900 dark:via-black dark:to-gray-800"></div>
+        <div class="absolute inset-0 opacity-20" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23000000\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
         
         <div class="container mx-auto px-6 text-center relative z-10">
-            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20">
-                <span class="text-blue-600 dark:text-blue-400 text-sm font-semibold">🚀 Next-Gen AI Development Platform</span>
+            <div class="inline-block mb-4 px-4 py-1.5 rounded-full bg-black/10 dark:bg-white/10 border border-black/20 dark:border-white/20">
+                <span class="text-black dark:text-white text-sm font-semibold">🚀 Next-Gen AI Development Platform</span>
             </div>
             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 Revolutionize Your <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-purple-600 dark:from-blue-400 dark:to-purple-500">Development Workflow</span>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-500 dark:from-white dark:to-gray-400">Development Workflow</span>
             </h1>
             <p class="text-xl text-gray-700 dark:text-gray-300 mb-10 max-w-2xl mx-auto">
                 balzo.io empowers developers with AI-driven automation tools to build faster, test smarter, and deploy with confidence.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition transform hover:scale-105 shadow-lg shadow-blue-600/20">
+                <a href="#contact" class="bg-black dark:bg-white text-white dark:text-black px-8 py-4 rounded-lg font-semibold text-lg transition transform hover:scale-105 shadow-lg">
                     Start Building Free
                 </a>
-                <a href="#features" class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white px-8 py-4 rounded-lg font-semibold text-lg transition">
+                <a href="#contact" class="bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white px-8 py-4 rounded-lg font-semibold text-lg transition">
                     Explore Features
                 </a>
             </div>
             
             <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div>
-                    <div class="text-3xl font-bold text-blue-600 dark:text-blue-400">500+</div>
+                    <div class="text-3xl font-bold text-black dark:text-white">500+</div>
                     <div class="text-gray-500 dark:text-gray-400 text-sm">Developers</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-bold text-purple-600 dark:text-purple-400">99.9%</div>
+                    <div class="text-3xl font-bold text-black dark:text-white">99.9%</div>
                     <div class="text-gray-500 dark:text-gray-400 text-sm">Uptime</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-bold text-pink-600 dark:text-pink-400">10x</div>
+                    <div class="text-3xl font-bold text-black dark:text-white">10x</div>
                     <div class="text-gray-500 dark:text-gray-400 text-sm">Faster</div>
                 </div>
                 <div>
-                    <div class="text-3xl font-bold text-cyan-600 dark:text-cyan-400">24/7</div>
+                    <div class="text-3xl font-bold text-black dark:text-white">24/7</div>
                     <div class="text-gray-500 dark:text-gray-400 text-sm">Support</div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-24 bg-gray-50 dark:bg-black relative">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Powerful Features for Modern Developers</h2>
-                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Our AI-powered platform provides comprehensive tools to streamline your development process and boost productivity.</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <!-- Feature 1 -->
-                <div class="glass p-8 rounded-2xl hover:border-blue-500/50 transition hover:shadow-xl hover:shadow-blue-500/10">
-                    <div class="w-14 h-14 bg-blue-500/10 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-code text-2xl text-blue-600 dark:text-blue-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">AI Code Automation</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Automate repetitive coding tasks with our intelligent AI engine. Generate boilerplate, refactor code, and optimize performance automatically.</p>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="glass p-8 rounded-2xl hover:border-purple-500/50 transition hover:shadow-xl hover:shadow-purple-500/10">
-                    <div class="w-14 h-14 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-robot text-2xl text-purple-600 dark:text-purple-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Smart Testing Suite</h3>
-                    <p class="text-gray-600 dark:text-gray-400">AI-driven test generation and optimization ensures your code is robust and bug-free. Catch issues before they reach production.</p>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="glass p-8 rounded-2xl hover:border-pink-500/50 transition hover:shadow-xl hover:shadow-pink-500/10">
-                    <div class="w-14 h-14 bg-pink-500/10 rounded-xl flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-line text-2xl text-pink-600 dark:text-pink-400"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Performance Analytics</h3>
-                    <p class="text-gray-600 dark:text-gray-400">Real-time insights into your code quality and performance. Make data-driven decisions to optimize your development workflow.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="py-24 bg-gray-50 dark:bg-black">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <div class="relative">
-                        <div class="absolute -top-4 -left-4 w-24 h-24 bg-blue-500/20 rounded-full blur-xl"></div>
-                        <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-purple-500/20 rounded-full blur-xl"></div>
-                        <div class="glass rounded-2xl p-8">
-                            <div class="flex items-center mb-6">
-                                <div class="flex -space-x-2">
-                                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-sm text-white">JD</div>
-                                    <div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-sm text-white">AS</div>
-                                    <div class="w-10 h-10 rounded-full bg-pink-600 flex items-center justify-center text-sm text-white">MJ</div>
-                                </div>
-                                <div class="ml-4">
-                                    <div class="font-semibold">Trusted by 500+ Developers</div>
-                                    <div class="text-sm text-gray-500 dark:text-gray-400">From startups to enterprises</div>
-                                </div>
-                            </div>
-                            <p class="text-gray-700 dark:text-gray-300 mb-4">"balzo.io has transformed how we approach development. The AI automation features alone have saved us hundreds of hours."</p>
-                            <div class="flex items-center">
-                                <div class="font-semibold">Sarah Johnson</div>
-                                <div class="mx-2">•</div>
-                                <div class="text-gray-500 dark:text-gray-400 text-sm">CTO at TechFlow</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="md:w-1/2">
-                    <h2 class="text-4xl font-bold mb-6">Built for the Future of Development</h2>
-                    <p class="text-gray-600 dark:text-gray-400 mb-6">At balzo.io, we believe that AI should augment human creativity, not replace it. Our platform provides the tools developers need to focus on what matters most—solving problems and building amazing products.</p>
-                    <p class="text-gray-600 dark:text-gray-400 mb-8">Founded by a team of passionate developers and AI researchers, we're committed to pushing the boundaries of what's possible in software development.</p>
-                    
-                    <div class="grid grid-cols-2 gap-6">
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 mt-1 mr-3"></i>
-                            <span>Developer-first approach</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 mt-1 mr-3"></i>
-                            <span>Enterprise-grade security</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 mt-1 mr-3"></i>
-                            <span>Seamless integrations</span>
-                        </div>
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-blue-600 dark:text-blue-400 mt-1 mr-3"></i>
-                            <span>Continuous innovation</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Contact Banner on Right Side -->
+        <div class="fixed right-6 top-1/2 transform -translate-y-1/2 flex flex-col space-y-4 z-40">
+            <a href="https://github.com/nymulislam" target="_blank" class="p-3 rounded-full bg-black dark:bg-white text-white dark:text-black shadow-lg hover:scale-110 transition transform glow-pulse">
+                <i class="fab fa-github text-xl"></i>
+            </a>
+            <a href="https://linkedin.com/in/nymulislam" target="_blank" class="p-3 rounded-full bg-black dark:bg-white text-white dark:text-black shadow-lg hover:scale-110 transition transform glow-pulse">
+                <i class="fab fa-linkedin text-xl"></i>
+            </a>
+            <a href="https://wa.me/8801822667737" target="_blank" class="p-3 rounded-full bg-black dark:bg-white text-white dark:text-black shadow-lg hover:scale-110 transition transform glow-pulse">
+                <i class="fab fa-whatsapp text-xl"></i>
+            </a>
+            <a href="mailto:naymulislam241@gmail.com" class="p-3 rounded-full bg-black dark:bg-white text-white dark:text-black shadow-lg hover:scale-110 transition transform glow-pulse">
+                <i class="fas fa-envelope text-xl"></i>
+            </a>
         </div>
     </section>
 
@@ -249,22 +192,22 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
                                 <label for="name" class="block text-sm font-medium mb-2">Name</label>
-                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <input type="text" id="name" required class="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none transition">
                             </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium mb-2">Email</label>
-                                <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                                <input type="email" id="email" required class="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none transition">
                             </div>
                         </div>
                         <div>
                             <label for="subject" class="block text-sm font-medium mb-2">Subject</label>
-                            <input type="text" id="subject" required class="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none transition">
+                            <input type="text" id="subject" required class="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none transition">
                         </div>
                         <div>
                             <label for="message" class="block text-sm font-medium mb-2">Message</label>
-                            <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-blue-500 focus:outline-none transition"></textarea>
+                            <textarea id="message" rows="5" required class="w-full px-4 py-3 rounded-lg bg-gray-100 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 focus:ring-2 focus:ring-black dark:focus:ring-white focus:outline-none transition"></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-4 rounded-lg font-semibold transition shadow-lg shadow-blue-600/20">
+                        <button type="submit" class="w-full bg-black dark:bg-white text-white dark:text-black px-6 py-4 rounded-lg font-semibold transition shadow-lg">
                             Send Message
                         </button>
                     </form>
@@ -272,18 +215,18 @@
                     <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
                         <h3 class="text-xl font-bold mb-6">Other Ways to Reach Me</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <a href="mailto:naymulislam241@gmail.com" class="flex items-center p-4 glass rounded-xl hover:bg-blue-500/10 transition group">
-                                <div class="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope text-blue-600 dark:text-blue-400 group-hover:text-blue-500 transition"></i>
+                            <a href="mailto:naymulislam241@gmail.com" class="flex items-center p-4 glass rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition group">
+                                <div class="w-12 h-12 bg-black dark:bg-white rounded-full flex items-center justify-center mr-4">
+                                    <i class="fas fa-envelope text-white dark:text-black group-hover:text-gray-500 dark:group-hover:text-gray-300 transition"></i>
                                 </div>
                                 <div>
                                     <div class="font-semibold">Email</div>
                                     <div class="text-sm text-gray-600 dark:text-gray-400">naymulislam241@gmail.com</div>
                                 </div>
                             </a>
-                            <a href="https://wa.me/8801822667737" target="_blank" class="flex items-center p-4 glass rounded-xl hover:bg-green-500/10 transition group">
-                                <div class="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fab fa-whatsapp text-green-600 dark:text-green-400 group-hover:text-green-500 transition"></i>
+                            <a href="https://wa.me/8801822667737" target="_blank" class="flex items-center p-4 glass rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 transition group">
+                                <div class="w-12 h-12 bg-black dark:bg-white rounded-full flex items-center justify-center mr-4">
+                                    <i class="fab fa-whatsapp text-white dark:text-black group-hover:text-gray-500 dark:group-hover:text-gray-300 transition"></i>
                                 </div>
                                 <div>
                                     <div class="font-semibold">WhatsApp</div>
@@ -297,31 +240,12 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section id="cta" class="py-24 bg-gradient-to-br from-blue-500 to-purple-600 relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h2 class="text-4xl md:text-5xl font-bold mb-6">Ready to Transform Your Workflow?</h2>
-            <p class="text-xl text-white/90 mb-10 max-w-2xl mx-auto">Join thousands of developers who are already building faster with balzo.io. Start your free trial today.</p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto">
-                <input type="email" placeholder="Enter your email" class="flex-1 px-6 py-4 rounded-lg bg-white/20 border border-white/30 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50">
-                <button class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-4 rounded-lg font-semibold transition shadow-lg shadow-white/20">
-                    Get Started
-                </button>
-            </div>
-            
-            <p class="text-white/70 mt-6 text-sm">No credit card required • 14-day free trial • Cancel anytime</p>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="bg-gray-900 border-t border-gray-800 pt-16 pb-8">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
                 <div>
-                    <div class="text-2xl font-bold text-blue-400 mb-4">
+                    <div class="text-2xl font-bold text-black dark:text-white mb-4">
                         <i class="fas fa-rocket mr-2"></i>balzo.io
                     </div>
                     <p class="text-gray-400 text-sm">Empowering developers with AI-driven tools to build the future, faster.</p>
@@ -330,30 +254,30 @@
                 <div>
                     <h4 class="font-semibold mb-4">Product</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-blue-400 transition">Features</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Integrations</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Pricing</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Changelog</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Features</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Integrations</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Pricing</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Changelog</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-semibold mb-4">Resources</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-blue-400 transition">Documentation</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">API Reference</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Community</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Documentation</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">API Reference</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Community</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Blog</a></li>
                     </ul>
                 </div>
                 
                 <div>
                     <h4 class="font-semibold mb-4">Company</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#" class="hover:text-blue-400 transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Careers</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Contact</a></li>
-                        <li><a href="#" class="hover:text-blue-400 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-black dark:hover:text-white transition">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -363,16 +287,16 @@
                     © 2024 balzo.io. All rights reserved.
                 </div>
                 <div class="flex space-x-6">
-                    <a href="https://github.com/nymulislam" target="_blank" class="text-gray-400 hover:text-blue-400 transition">
+                    <a href="https://github.com/nymulislam" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white transition">
                         <i class="fab fa-github text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                    <a href="#" class="text-gray-400 hover:text-black dark:hover:text-white transition">
                         <i class="fab fa-x-twitter text-xl"></i>
                     </a>
-                    <a href="https://linkedin.com/in/nymulislam" target="_blank" class="text-gray-400 hover:text-blue-400 transition">
+                    <a href="https://linkedin.com/in/nymulislam" target="_blank" class="text-gray-400 hover:text-black dark:hover:text-white transition">
                         <i class="fab fa-linkedin text-xl"></i>
                     </a>
-                    <a href="#" class="text-gray-400 hover:text-blue-400 transition">
+                    <a href="#" class="text-gray-400 hover:text-black dark:hover:text-white transition">
                         <i class="fab fa-discord text-xl"></i>
                     </a>
                 </div>
@@ -387,10 +311,11 @@
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg transition-transform hover:scale-110 hidden">
+    <button id="scroll-to-top" class="fixed bottom-8 right-8 z-50 p-3 rounded-full bg-black dark:bg-white text-white dark:text-black shadow-lg transition-transform hover:scale-110 hidden">
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <script src="motion.js"></script>
     <script>
         // Theme Toggle
         const themeToggle = document.getElementById('theme-toggle');
