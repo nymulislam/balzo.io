@@ -1,4 +1,4 @@
-# balzo.io
+# [balzo.io](https://balzo.io)
 
 <p align="center">
   <img src="rocket.svg" alt="balzo.io logo" width="80" />
@@ -84,4 +84,4 @@ Update these values wherever they appear in `index.html`:
 
 ## License
 
-No license has been specified for this project. All rights reserved by the author unless stated otherwise.
+This project is licensed under the [MIT License](LICENSE).
