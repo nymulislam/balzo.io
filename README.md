@@ -1,70 +1,87 @@
 # balzo.io
 
-![balzo.io Logo](rocket.svg)
+<p align="center">
+  <img src="rocket.svg" alt="balzo.io logo" width="80" />
+</p>
 
-Welcome to **balzo.io** – Your gateway to AI-powered development solutions. This project showcases our platform that empowers developers with AI-driven automation tools to build faster, test smarter, and deploy with confidence.
+<p align="center">
+  A static marketing site for <strong>balzo.io</strong> — AI-powered development automation tools for building faster, testing smarter, and deploying with confidence.
+</p>
 
-## 🚀 Features
+## Overview
 
-- **AI-Powered Development**: Leverage cutting-edge AI tools to streamline your development workflow
-- **Responsive Design**: Fully responsive website that works seamlessly across all devices
-- **Dark/Light Mode**: Toggle between dark and light themes for comfortable viewing
-- **Smooth Animations**: Beautiful scroll-based animations for an engaging user experience
-- **Contact Form**: Easy-to-use contact form for inquiries and collaborations
-- **Social Integration**: Direct links to GitHub, LinkedIn, WhatsApp, and email
+balzo.io is a single-page site built with plain HTML, Tailwind CSS (via CDN), and vanilla JavaScript. It has no build step or dependencies to install — open `index.html` and it runs.
 
-## 🛠️ Technologies Used
+## Features
 
-- HTML5
-- CSS3 (Tailwind CSS)
-- JavaScript (ES6+)
-- Font Awesome Icons
-- Intersection Observer API for scroll animations
-- LocalStorage for theme persistence
+- **Light/dark theme toggle** — switches instantly, remembers your choice in `localStorage`, and falls back to your OS preference on first visit
+- **Responsive layout** — adapts from mobile through desktop, including a dedicated mobile navigation menu
+- **Scroll animations** — sections fade and rise into view as you scroll, powered by the Intersection Observer API
+- **Contact form** — client-side validated with inline submit feedback
+- **Social links** — direct links to GitHub, LinkedIn, WhatsApp, and email
 
-## 📋 Prerequisites
+## Tech Stack
 
-Before you begin, ensure you have the following installed:
+| Layer      | Technology                     |
+|------------|---------------------------------|
+| Markup     | HTML5                          |
+| Styling    | Tailwind CSS (CDN) + custom CSS |
+| Behavior   | Vanilla JavaScript (ES6+)       |
+| Icons      | Font Awesome 6                  |
+| Animations | Intersection Observer API       |
+
+## Getting Started
+
+### Prerequisites
+
 - A modern web browser (Chrome, Firefox, Safari, or Edge)
-- A code editor (VS Code, Sublime Text, or your preference)
+- A code editor, if you plan to make changes (VS Code recommended)
 
-## 🚀 Installation
+### Run Locally
 
-1. Clone the repository or download the project files:
-   ```bash
-   git clone <repository-url>
-   cd balzo.io
-   ```
+```bash
+git clone <repository-url>
+cd balzo.io
+```
 
-2. Open `index.html` in your web browser:
-   - Simply double-click the file, or
-   - Right-click and choose "Open with" your preferred browser
+Then open `index.html` directly in your browser — no server or build step required.
 
-That's it! The website is ready to use.
+## Project Structure
 
-## 🎨 Customization
+```
+balzo.io/
+├── index.html      # Page markup, Tailwind config, and inline styles/scripts
+├── motion.js        # Scroll-reveal animation logic
+├── rocket.svg        # Site logo/favicon
+└── README.md
+```
 
-### Changing the Theme
+## Customization
 
-The website supports both light and dark modes:
-- Click the moon/sun icon in the navigation bar to toggle themes
-- Your preference is saved in localStorage and persists across visits
+### Theme
 
-### Modifying Content
+Click the circular moon/sun button in the top-right corner to switch between light and dark mode. The choice is saved automatically and restored on your next visit.
 
-Edit the following sections in `index.html`:
-- **Navigation**: Update links and menu items
-- **Hero Section**: Modify the main headline and description
-- **Contact Section**: Update contact information and form fields
-- **Footer**: Change copyright information and social links
+### Content
 
-### Updating Social Links
+Most content lives directly in `index.html`:
 
-Find and update the social media links throughout the HTML:
+| Section  | What to edit                                  |
+|----------|------------------------------------------------|
+| Navbar   | Logo text, nav links, "Get Started" CTA        |
+| Hero     | Headline, subheading, primary/secondary buttons |
+| Contact  | Form fields, intro copy, alternate contact links |
+| Footer   | Link columns, copyright, social icons           |
+
+### Social & Contact Links
+
+Update these values wherever they appear in `index.html`:
+
 - GitHub: `https://github.com/nymulislam`
 - LinkedIn: `https://linkedin.com/in/nymulislam`
 - WhatsApp: `+8801822667737`
 - Email: `naymulislam241@gmail.com`
 
-## 📁 Project Structure
+## License
 
+No license has been specified for this project. All rights reserved by the author unless stated otherwise.
